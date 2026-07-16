@@ -10,11 +10,11 @@ A full-stack AI chatbot with real-time conversation memory, voice input, and mar
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 ## Demo
-<img src="screenshots/hero.png" width="700">
+<img src="screenshots/hero.png" width="500">
 
-<img src="screenshots/model-question.png" width="700">
+<img src="screenshots/model-question.png" width="500">
 
-<img src="screenshots/code-block.png" width="700">
+<img src="screenshots/code-block.png" width="500">
 
 
 ## Features
