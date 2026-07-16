@@ -1,6 +1,6 @@
-# AI Chatbot with Memory — FastAPI, React & Local LLM
+# AI Chatbot with Memory (FastAPI, React & Local LLM)
 
-A full-stack AI chatbot with real-time conversation memory, voice input, and markdown-aware responses — powered by a locally-run open-source language model, with no paid API required.
+A full-stack AI chatbot with real-time conversation memory, voice input, and markdown-aware responses, powered by a locally-run open-source language model, with no paid API required.
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
@@ -10,24 +10,20 @@ A full-stack AI chatbot with real-time conversation memory, voice input, and mar
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 ## Demo
+<img src="screenshots/hero.png" width="700">
 
-![Chatbot conversation](screenshots/hero.png)
-*The chat interface — custom-built UI with avatars, timestamps, and a locally-run AI backend*
+<img src="screenshots/model-question.png" width="700">
 
-![Model transparency](screenshots/model-question.png)
-*Asking the AI directly what model it is confirms it's running Llama 3.2 locally — no external API calls, no data leaving the machine*
-
-![Code rendering](screenshots/code-block.png)
-*Responses are parsed as markdown, so code comes back properly formatted instead of raw text*
+<img src="screenshots/code-block.png" width="700">
 
 
 ## Features
 
-- **Real-time chat with conversation memory** — the backend keeps a running history per session, so the AI remembers earlier context instead of treating every message in isolation
-- **Runs on a local, open-source LLM** (Llama 3.2 via [Ollama](https://ollama.com)) — free, private, and works fully offline once set up; no API key or billing
-- **Voice input** using the browser's native Speech Recognition API — click the mic and speak instead of typing
+- **Real-time chat with conversation memory** : the backend keeps a running history per session, so the AI remembers earlier context instead of treating every message in isolation
+- **Runs on a local, open-source LLM** (Llama 3.2 via [Ollama](https://ollama.com)) : free, private, and works fully offline once set up; no API key or billing
+- **Voice input** using the browser's native Speech Recognition API : click the mic and speak instead of typing
 - **Markdown and code-block rendering** in AI responses, so technical answers (code, lists, formatting) display properly instead of as raw text
-- **Custom-built chat UI** — avatars, timestamps, an animated typing indicator, and a responsive layout, all built from scratch with plain CSS (no UI library)
+- **Custom-built chat UI** : avatars, timestamps, an animated typing indicator, and a responsive layout, all built from scratch with plain CSS (no UI library)
 
 ## Tech Stack
 
@@ -58,7 +54,7 @@ sequenceDiagram
     F->>U: Render reply as parsed markdown
 ```
 
-**Why the backend sends the full history, not just the latest message:** this is what gives the chatbot memory — the local model has no memory of its own between requests, so every call re-sends the whole conversation so far, letting the model see everything said previously in that session.
+**Why the backend sends the full history, not just the latest message:** this is what gives the chatbot memory, the local model has no memory of its own between requests, so every call re-sends the whole conversation so far, letting the model see everything said previously in that session.
 
 ```
 ┌─────────────┐        HTTP         ┌─────────────┐       HTTP        ┌──────────────┐
