@@ -20,9 +20,6 @@ A full-stack AI chatbot with real-time conversation memory, voice input, and mar
 ![Code rendering](screenshots/code-block.png)
 *Responses are parsed as markdown, so code comes back properly formatted instead of raw text*
 
-## Why I built this
-
-I wanted to understand how a frontend, backend, and an AI model actually connect end-to-end — not just call a paid API and display the result, but build the full pipeline myself: session handling, conversation memory, and a real UI layer on top of an open-source model I control.
 
 ## Features
 
@@ -44,7 +41,7 @@ I wanted to understand how a frontend, backend, and an AI model actually connect
 
 ## Architecture
 
-\`\`\`mermaid
+```mermaid
 sequenceDiagram
     participant U as User
     participant F as React Frontend (:5173)
@@ -59,11 +56,11 @@ sequenceDiagram
     B->>B: Append reply to session history
     B->>F: { reply, session_id }
     F->>U: Render reply as parsed markdown
-\`\`\`
+```
 
 **Why the backend sends the full history, not just the latest message:** this is what gives the chatbot memory — the local model has no memory of its own between requests, so every call re-sends the whole conversation so far, letting the model see everything said previously in that session.
 
-\`\`\`
+```
 ┌─────────────┐        HTTP         ┌─────────────┐       HTTP        ┌──────────────┐
 │   React     │ ───────────────────▶│   FastAPI   │ ──────────────────▶│    Ollama    │
 │  (Vite UI)  │◀─────────────────── │   Backend   │◀────────────────── │  Llama 3.2   │
@@ -73,13 +70,13 @@ sequenceDiagram
                                             ▼
                                   In-memory session
                                   history (per user)
-\`\`\`
+```
 
 ## Running It Locally
 
 **Prerequisites:** Python 3.11+, Node.js, and [Ollama](https://ollama.com) installed.
 
-\`\`\`bash
+```bash
 # 1. Pull the model (one-time, ~1.3GB)
 ollama pull llama3.2:1b
 
@@ -94,13 +91,13 @@ uvicorn main:app --reload --port 8000
 cd frontend
 npm install
 npm run dev
-\`\`\`
+```
 
 Then open `http://localhost:5173` in your browser (Chrome recommended for voice input support).
 
 ## Project Structure
 
-\`\`\`
+```
 ai-chatbot-project/
 ├── backend/
 │   └── main.py          # FastAPI server, session memory, Ollama integration
@@ -109,15 +106,12 @@ ai-chatbot-project/
 │       ├── App.jsx      # Chat UI, voice input, markdown rendering
 │       └── App.css       # Styling
 └── screenshots/
-\`\`\`
+```
 
 ## What I'd Improve With More Time
 
 - Persist conversation history in a real database (SQLite/Postgres) instead of in-memory storage, so sessions survive a server restart
 - Add streaming responses (token-by-token) instead of waiting for the full reply
-- Deploy it publicly — currently local-only since Ollama needs to run on the host machine
+- Deploy it publicly, currently local-only since Ollama needs to run on the host machine
 - Add text-to-speech so the AI can read responses aloud, not just accept voice input
 
-## License
-
-MIT
