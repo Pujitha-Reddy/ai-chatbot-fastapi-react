@@ -12,9 +12,9 @@ A full-stack AI chatbot with real-time conversation memory, voice input, and mar
 ## Demo
 <img src="screenshots/hero.png" width="500">
 
-<img src="screenshots/model-question.png" width="500">
+<img src="screenshots/model-question.png" width="700">
 
-<img src="screenshots/code-block.png" width="500">
+<img src="screenshots/code-block.png" width="700">
 
 
 ## Features
